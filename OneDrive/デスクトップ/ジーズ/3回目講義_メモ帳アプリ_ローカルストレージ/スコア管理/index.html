@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Golf Score Management</title>
+    <link rel="stylesheet" href="css/sample.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Golf Score Management</h1>
+    </header>
+
+    <main>
+      <p>日付</p>
+      <input type="date" />
+
+      <p>ゴルフ場</p>
+      <select id="course">
+        <option value="course1">古賀ゴルフ・クラブ</option>
+        <option value="course2">芥屋ゴルフ俱楽部</option>
+        <option value="course3">福岡カンツリー俱楽部</option>
+      </select>
+
+      <p>天気</p>
+      <select id="weather">
+        <option value="sunny">晴れ</option>
+        <option value="cloud">曇り</option>
+        <option value="rain">雨</option>
+      </select>
+
+      <p>スコア</p>
+      <textarea id="score"></textarea>
+
+      <ul>
+        <li id="save">保存</li>
+        <li id="load">反映</li>
+        <li id="clear">削除</li>
+      </ul>
+    </main>
+
+    <footer>
+      <small>Make the best Score!</small>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      // 選択された日付を保存する関数
+      $("#save").click(function () {
+        var selectedValue = $("#course").val();
+        var data = JSON.stringify(selectedValue);
+        localStorage.setItem("selecteddate", data);
+        alert("日付を保存しました。");
+      });
+
+      // 選択された日付を読み出す関数
+      $("#load").click(function () {
+        var data = localStorage.getItem("selecteddate");
+        if (data) {
+          var selectedWeather = JSON.parse(data);
+          alert("選択された日付は " + selectedcourse + " です。");
+        } else {
+          alert("保存された日付はありません。");
+        }
+      });
+
+      // 選択された日付を削除する関数
+      $("#clear").click(function () {
+        localStorage.removeItem("selecteddate");
+        alert("コースを削除しました。");
+      });
+
+      // 選択されたゴルフ場を保存する関数
+      $("#save").click(function () {
+        var selectedValue = $("#course").val();
+        var data = JSON.stringify(selectedValue);
+        localStorage.setItem("selectedWeather", data);
+        alert("コースを保存しました。");
+      });
+
+      // 選択されたゴルフ場を読み出す関数
+      $("#load").click(function () {
+        var data = localStorage.getItem("selectedcourse");
+        if (data) {
+          var selectedWeather = JSON.parse(data);
+          alert("選択されたコースは " + selectedcourse + " です。");
+        } else {
+          alert("保存されたコースはありません。");
+        }
+      });
+
+      // 選択されたゴルフ場を削除する関数
+      $("#clear").click(function () {
+        localStorage.removeItem("selectedcourse");
+        alert("コースを削除しました。");
+      });
+
+      // 選択された天気を保存する関数
+      $("#save").click(function () {
+        var selectedValue = $("#weather").val();
+        var data = JSON.stringify(selectedValue);
+        localStorage.setItem("selectedWeather", data);
+        alert("天気を保存しました。");
+      });
+
+      // 選択された天気を読み出す関数
+      $("#load").click(function () {
+        var data = localStorage.getItem("selectedWeather");
+        if (data) {
+          var selectedWeather = JSON.parse(data);
+          alert("選択された天気は " + selectedWeather + " です。");
+        } else {
+          alert("保存された天気はありません。");
+        }
+      });
+
+      // 選択された天気を削除する関数
+      $("#clear").click(function () {
+        localStorage.removeItem("selectedWeather");
+        alert("天気を削除しました。");
+      });
+
+      // 選択されたスコアを保存する関数
+      $("#save").click(function () {
+        var selectedValue = $("#score").val();
+        var data = JSON.stringify(selectedValue);
+        localStorage.setItem("selectedscore", data);
+        alert("スコアを保存しました。");
+      });
+
+      // 選択されたスコアを読み出す関数
+      $("#load").click(function () {
+        var data = localStorage.getItem("selectedscore");
+        if (data) {
+          var selectedWeather = JSON.parse(data);
+          alert("選択されたスコアは " + selectedscore + " です。");
+        } else {
+          alert("保存されたスコアはありません。");
+        }
+      });
+
+      // 選択されたスコアを削除する関数
+      $("#clear").click(function () {
+        localStorage.removeItem("selectedscore");
+        alert("スコアを削除しました。");
+      });
+    </script>
+  </body>
+</html>
